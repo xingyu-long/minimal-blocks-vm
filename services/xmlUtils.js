@@ -70,54 +70,13 @@ const getProgramXml = function (vm) {
   return str;
 };
 
-const extractXml = function (projectId, res) {
-  console.error("-----------------extractXml");
-  const storage = new ScratchStorage();
-
-  const AssetType = storage.AssetType;
-  storage.addWebStore([AssetType.Project], getOfficialProjectUrl);
-  storage.addWebStore(
-    [AssetType.ImageVector, AssetType.ImageBitmap, AssetType.Sound],
-    getOfficialAssetUrl
-  );
-  const vm = new ScratchVm();
-  vm.attachStorage(storage);
-  vm.on("workspaceUpdate", (data) => {
-    new Promise(function (resolve, reject) {
-      resolve(getProgramXml(vm));
-    }).then((xmlStr) => {
-      console.log("successfully processed:", projectId);
-      res.set("Content-Type", "text/xml");
-      res.status(200).send(xmlStr);
-      clearTimeout(xmlTimeout);
-    });
-  });
-
-  const promise = storage.load(storage.AssetType.Project, projectId);
-
-  promise
-    .then((projectAsset) => {
-      vm.loadProject(projectAsset.data);
-    })
-    .catch((err) => {
-      console.log("error");
-    });
-
-  var xmlTimeout = setTimeout(() => {
-    res.set("Content-Type", "text/xml");
-    res
-      .status(500)
-      .send("Error getting xml source file! Timeout after 60 seconds");
-  }, 10000);
-};
-
 /**
  *
  * @param {*} projectId
  * @param {*} onSuccess
  */
 
-const extractXml2 = function (projectId, onSuccess, onError, onTimeout) {
+const extractXml = function (projectId, onSuccess, onError, onTimeout) {
   const storage = new ScratchStorage();
 
   const AssetType = storage.AssetType;
@@ -159,4 +118,3 @@ const extractXml2 = function (projectId, onSuccess, onError, onTimeout) {
 };
 
 exports.extractXml = extractXml;
-exports.extractXml2 = extractXml2;

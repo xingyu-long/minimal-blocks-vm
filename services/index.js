@@ -5,7 +5,7 @@ const app = express();
 const port = 3001;
 app.use(cors({ origin: "http://localhost:3000" }));
 
-const { extractXml, extractXml2 } = require("./xmlUtils");
+const { extractXml } = require("./xmlUtils");
 
 app.get("/download/projects/:projectId", function (req, res) {
   const { projectId } = req.params;
@@ -29,7 +29,7 @@ app.get("/xml/:projectId", function (req, res) {
       .status(500)
       .send("Error getting xml source file! Timeout after 60 seconds");
   };
-  extractXml2(projectId, onSuccess, onError, onTimeout);
+  extractXml(projectId, onSuccess, onError, onTimeout);
 });
 
 app.listen(port, () => {
