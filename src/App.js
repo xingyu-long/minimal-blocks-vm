@@ -110,7 +110,11 @@ function App() {
       <div className="control">
         <button onClick={() => vm.current.greenFlag()}>Green Flag</button>
         <button onClick={() => vm.current.stopAll()}>Stop All</button>
-        <button onClick={() => console.log(vm.current.toJSON())}>
+        <button
+          onClick={() => {
+            console.log(vm.current.toJSON());
+          }}
+        >
           Log (json)
         </button>
       </div>

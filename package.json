@@ -24,7 +24,8 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "serve": "serve ./sb3-projects"
+    "serve": "serve ./sb3-projects",
+    "services": "cd services && npm start"
   },
   "eslintConfig": {
     "extends": [
