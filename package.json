@@ -7,12 +7,15 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0",
     "lodash.omit": "^4.5.0",
+    "node-fetch": "^2.6.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
     "scratch-audio": "0.1.0-prerelease.20200528195344",
-    "scratch-blocks": "0.1.0-prerelease.20201226032341",
+    "scratch-blocks": "/Users/clarklong/Desktop/Github/scratch-blocks",
     "scratch-render": "0.1.0-prerelease.20201113223804",
     "scratch-storage": "^1.3.3",
     "scratch-svg-renderer": "^0.2.0-prerelease.20201019174008",
@@ -24,8 +27,7 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "serve": "serve ./sb3-projects",
-    "services": "cd services && npm start"
+    "serve": "serve ./sb3-projects"
   },
   "eslintConfig": {
     "extends": [

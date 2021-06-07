@@ -62,3 +62,9 @@
 .targetSelector {
   margin: 8px;
 }
+
+.importExport{
+  display: block;
+  height: 300px;
+  width: 100%;
+}
